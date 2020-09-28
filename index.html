@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-  
+    v3
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -29,6 +29,9 @@
             suggestedDisplayName: "MyNewTab",
           });
           saveEvent.notifySuccess();
+          
+          const response = microsoftTeams.settings.getSettings();
+          alert(JSON.stringify(response)
         });
       };
       let saveRed = () => {
@@ -40,6 +43,9 @@
             suggestedDisplayName: "MyNewTab",
           });
           saveEvent.notifySuccess();
+          
+          const response = microsoftTeams.settings.getSettings();
+          alert(JSON.stringify(response)
         });
       };
 
