@@ -7,23 +7,18 @@
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
-      onclick="(document.getElementById('icon').src = '/images/iconGray.png'); colorClickGray()"
+      onclick="colorClickGray()"
     >
       Select Gray
     </button>
-    <img
-      id="icon"
-      src="/images/teamsIcon.png"
-      alt="icon"
-      style="width: 100px"
-    />
     <button
-      onclick="(document.getElementById('icon').src = '/images/iconRed.png'); colorClickRed()"
+      onclick="colorClickRed()"
     >
       Select Red
     </button>
 
     <script>
+      try {
       microsoftTeams.initialize();
       let saveGray = () => {
         microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
@@ -64,6 +59,10 @@
         microsoftTeams.settings.setValidityState(true);
         saveRed();
       };
+        
+    } catch (err) {
+      alert(err.message)
+    }
     </script>
   </body>
 </html>
