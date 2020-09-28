@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v3
+    v4
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -18,9 +18,10 @@
     </button>
 
     <script>
-      try {
+      
       microsoftTeams.initialize();
       let saveGray = () => {
+        try {
         microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
           microsoftTeams.settings.setSettings({
             websiteUrl: "https://yourWebsite.com",
@@ -33,8 +34,13 @@
           const response = microsoftTeams.settings.getSettings();
           alert(JSON.stringify(response)
         });
+                 
+    } catch (err) {
+      alert(err.message)
+    }
       };
       let saveRed = () => {
+         try {
         microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
           microsoftTeams.settings.setSettings({
             websiteUrl: "https://yourWebsite.com",
@@ -47,11 +53,15 @@
           const response = microsoftTeams.settings.getSettings();
           alert(JSON.stringify(response)
         });
+    } catch (err) {
+      alert(err.message)
+    }
       };
 
       let gr = document.getElementById("gray").style;
       let rd = document.getElementById("red").style;
-
+ 
+        
       const colorClickGray = () => {
         gr.display = "block";
         rd.display = "none";
@@ -65,10 +75,6 @@
         microsoftTeams.settings.setValidityState(true);
         saveRed();
       };
-        
-    } catch (err) {
-      alert(err.message)
-    }
     </script>
   </body>
 </html>
