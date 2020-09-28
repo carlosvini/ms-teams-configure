@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v6.1
+    v7
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -22,71 +22,35 @@
     <script>
       
       microsoftTeams.initialize();
-      let saveGray = () => {
-        try {
-        microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
+      microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
           /*microsoftTeams.settings.setSettings({
             websiteUrl: "https://keee.ai",
             contentUrl: "https://keee.ai/gray",
             entityId: "grayIconTab",
             suggestedDisplayName: "MyNewTab",
           });*/
+          
+          microsoftTeams.settings.getSettings(response => {
+            document.getElementById('response').innerHTML = JSON.stringify(response)
+          });
+          
           setTimeout(() => {
             saveEvent.notifySuccess();
           }, 2000);
-          
-          microsoftTeams.settings.getSettings(response => {
-            document.getElementById('response').innerHTML = JSON.stringify(response)
-          });
-          
-        });
-                 
-    } catch (err) {
-      alert(err.message)      
-      alert(err.stack)
-    }
-      };
-      let saveRed = () => {
-         try {
-        microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
-          /*
-          microsoftTeams.settings.setSettings({
-            websiteUrl: "https://keee.ai",
-            contentUrl: "https://keee.ai/red",
-            entityId: "redIconTab",
-            suggestedDisplayName: "MyNewTab",
-          });
-          */
-           setTimeout(() => {
-            saveEvent.notifySuccess();
-          }, 2000);
-          
-          microsoftTeams.settings.getSettings(response => {
-            document.getElementById('response').innerHTML = JSON.stringify(response)
-          });
-        });
-    } catch (err) {
-      alert('l61 '+err.message)
-      alert('l62 '+err.stack)
-    }
-      };
-
-      let gr = document.getElementById("gray").style;
-      let rd = document.getElementById("red").style;
- 
+      });
         
       const colorClickGray = () => {
         gr.display = "block";
         rd.display = "none";
         microsoftTeams.settings.setValidityState(true);
-        saveGray();
+        //saveGray();
       };
 
       const colorClickRed = () => {
         rd.display = "block";
         gr.display = "none";
         microsoftTeams.settings.setValidityState(true);
-        saveRed();
+        //saveRed();
       };
     </script>
   </body>
