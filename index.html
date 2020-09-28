@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v5.1
+    v6
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -17,22 +17,24 @@
       Select Red
     </button>
 
+    <div id="response">response</div>
+    
     <script>
       
       microsoftTeams.initialize();
       let saveGray = () => {
         try {
         microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
-          microsoftTeams.settings.setSettings({
+          /*microsoftTeams.settings.setSettings({
             websiteUrl: "https://keee.ai",
             contentUrl: "https://keee.ai/gray",
             entityId: "grayIconTab",
             suggestedDisplayName: "MyNewTab",
-          });
+          });*/
           saveEvent.notifySuccess();
           
           microsoftTeams.settings.getSettings(response => {
-            alert('l35 '+JSON.stringify(response))  
+            document.getElementById('response').innerHTML = JSON.stringify(response)
           });
           
         });
@@ -45,16 +47,18 @@
       let saveRed = () => {
          try {
         microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
+          /*
           microsoftTeams.settings.setSettings({
             websiteUrl: "https://keee.ai",
             contentUrl: "https://keee.ai/red",
             entityId: "redIconTab",
             suggestedDisplayName: "MyNewTab",
           });
+          */
           saveEvent.notifySuccess();
           
           microsoftTeams.settings.getSettings(response => {
-            alert('l57 '+JSON.stringify(response))  
+            document.getElementById('response').innerHTML = JSON.stringify(response)
           });
         });
     } catch (err) {
