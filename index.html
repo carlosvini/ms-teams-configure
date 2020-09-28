@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v4.1
+    v5.1
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -24,37 +24,42 @@
         try {
         microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
           microsoftTeams.settings.setSettings({
-            websiteUrl: "https://yourWebsite.com",
-            contentUrl: "https://yourWebsite.com/gray",
+            websiteUrl: "https://keee.ai",
+            contentUrl: "https://keee.ai/gray",
             entityId: "grayIconTab",
             suggestedDisplayName: "MyNewTab",
           });
           saveEvent.notifySuccess();
           
-          const response = microsoftTeams.settings.getSettings();
-          alert(JSON.stringify(response))
+          microsoftTeams.settings.getSettings(response => {
+            alert('l35 '+JSON.stringify(response))  
+          });
+          
         });
                  
     } catch (err) {
-      alert(err.message)
+      alert(err.message)      
+      alert(err.stack)
     }
       };
       let saveRed = () => {
          try {
         microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
           microsoftTeams.settings.setSettings({
-            websiteUrl: "https://yourWebsite.com",
-            contentUrl: "https://yourWebsite.com/red",
+            websiteUrl: "https://keee.ai",
+            contentUrl: "https://keee.ai/red",
             entityId: "redIconTab",
             suggestedDisplayName: "MyNewTab",
           });
           saveEvent.notifySuccess();
           
-          const response = microsoftTeams.settings.getSettings();
-          alert(JSON.stringify(response))
+          microsoftTeams.settings.getSettings(response => {
+            alert('l57 '+JSON.stringify(response))  
+          });
         });
     } catch (err) {
-      alert(err.message)
+      alert('l61 '+err.message)
+      alert('l62 '+err.stack)
     }
       };
 
