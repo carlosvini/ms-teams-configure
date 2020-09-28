@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v4
+    v4.1
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -32,7 +32,7 @@
           saveEvent.notifySuccess();
           
           const response = microsoftTeams.settings.getSettings();
-          alert(JSON.stringify(response)
+          alert(JSON.stringify(response))
         });
                  
     } catch (err) {
@@ -51,7 +51,7 @@
           saveEvent.notifySuccess();
           
           const response = microsoftTeams.settings.getSettings();
-          alert(JSON.stringify(response)
+          alert(JSON.stringify(response))
         });
     } catch (err) {
       alert(err.message)
