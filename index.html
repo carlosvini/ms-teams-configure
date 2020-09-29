@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v7
+    v8
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -23,6 +23,7 @@
       
       microsoftTeams.initialize();
       microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
+        try {
           /*microsoftTeams.settings.setSettings({
             websiteUrl: "https://keee.ai",
             contentUrl: "https://keee.ai/gray",
@@ -37,12 +38,19 @@
           setTimeout(() => {
             saveEvent.notifySuccess();
           }, 2000);
+        } catch (err) {
+          alert('l42 '+err.stack);
+        }
       });
         
       const colorClickGray = () => {
         gr.display = "block";
         rd.display = "none";
-        microsoftTeams.settings.setValidityState(true);
+        try {
+            microsoftTeams.settings.setValidityState(true);
+        } catch (err) {
+            alert('l52 '+err.stack);
+        }
         //saveGray();
       };
 
