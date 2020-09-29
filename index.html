@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v8.1
+    v8.2
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -43,6 +43,8 @@
         }
       });
         
+      let gr = document.getElementById("gray").style;
+      let rd = document.getElementById("red").style;
       const colorClickGray = () => {
         gr.display = "block";
         rd.display = "none";
