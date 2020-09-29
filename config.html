@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v10
+    v10.1
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -29,8 +29,8 @@
       microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
         try {
           microsoftTeams.settings.setSettings({
-            websiteUrl: "https://carlosvini.github.io/ms-teams-configure/",
-            contentUrl: "https://carlosvini.github.io/ms-teams-configure",
+            websiteUrl: "https://carlosvini.github.io/ms-teams-configure/config.html",
+            contentUrl: "https://carlosvini.github.io/ms-teams-configure/config.html",
             entityId: "grayIconTab",
             suggestedDisplayName: "MyNewTab",
           });
