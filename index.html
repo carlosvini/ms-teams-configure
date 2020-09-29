@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v8.2
+    v9
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -18,8 +18,12 @@
     </button>
 
     <div id="response">response</div>
+    <div id="localStorage">localStorage</div>
     
     <script>
+      const count = localStorage.getItem('count')
+      document.getElementById('response').innerHTML = JSON.stringify({ count })
+      localStorage.setItem('count', Number(count) + 1)
       
       microsoftTeams.initialize();
       microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
