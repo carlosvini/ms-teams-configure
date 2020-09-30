@@ -3,7 +3,7 @@
     <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"></script>
   </head>
   <body>
-    v10.1
+    v10.2
     <div id="gray" style="display:none">Gray</div>
     <div id="red" style="display:none">Red</div>
     <button
@@ -18,19 +18,28 @@
     </button>
 
     <div id="response">response</div>
-    <div id="localStorage">localStorage</div>
+    <div id="log" style="max-height: 200px;overflow: auto;">log</div>
+    <div id="error" style="max-height: 200px;overflow: auto;color: red;">error</div>
     
     <script>
+      /*
       const count = localStorage.getItem('count')
-      document.getElementById('response').innerHTML = JSON.stringify({ count })
+      document.getElementById('localStorage').innerHTML = JSON.stringify({ count })
       localStorage.setItem('count', Number(count) + 1)
+      */
+      window.console.log = (message) => {
+        document.getElementById('log').innerHTML += message instanceof Error ? error.stack :  JSON.stringify({ message })
+      }
+      window.console.error = (message) => {
+        document.getElementById('error').innerHTML += message instanceof Error ? error.stack :  JSON.stringify({ message })
+      }
       
       microsoftTeams.initialize();
       microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
         try {
           microsoftTeams.settings.setSettings({
-            websiteUrl: "https://carlosvini.github.io/ms-teams-configure/config.html",
-            contentUrl: "https://carlosvini.github.io/ms-teams-configure/config.html",
+            websiteUrl: "https://carlosvini.github.io/ms-teams-configure",
+            contentUrl: "https://carlosvini.github.io/ms-teams-configure",
             entityId: "grayIconTab",
             suggestedDisplayName: "MyNewTab",
           });
